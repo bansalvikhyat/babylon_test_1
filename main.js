@@ -54,22 +54,21 @@ const createScene = async () => {
         new BABYLON.Vector3(1, 1, 0)
     );
 
-    const layer = new BABYLON.Layer("layer", null, scene, true);
-    BABYLON.VideoTexture.CreateFromWebCam(
-        scene,
-        (videoTexture) => {
-            videoTexture.vScale = -1.0;
-            videoTexture.uScale =
-                ((canvas.width / canvas.height) *
-                    videoTexture.getSize().height) /
-                videoTexture.getSize().width;
-            layer.texture = videoTexture;
-        },
-        {
-            maxWidth: canvas.width,
-            maxHeight: canvas.height,
-            facingMode: "environment",
-        }
+    const videoLayer = new BABYLON.Layer("videoLayer", null, scene, true);
+    const videoTexture = BABYLON.VideoTexture.CreateFromWebCam(
+      scene,
+      (videoTexture) => {
+        videoTexture._invertY = false;
+        videoTexture;
+        videoLayer.texture = videoTexture;
+      },
+      {
+        minWidth: 640,
+        minHeight: 480,
+        maxWidth: 1920,
+        maxHeight: 1080,
+        deviceId: "",
+      }
     );
 
     // const sessionManager = new WebXRSessionManager(scene);
@@ -128,3 +127,4 @@ engine.runRenderLoop(function () {
 // window.addEventListener("resize", function () {
 //     engine.resize();
 // });
+
