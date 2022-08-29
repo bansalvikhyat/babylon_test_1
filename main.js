@@ -19,7 +19,8 @@ const createScene = async () => {
 
     // Positions the camera overwriting alpha, beta, radius
     camera1.setPosition(new BABYLON.Vector3(0, 0, 0));
-    
+    camera1.upperRadiusLimit =  8;
+    camera1.lowerRadiusLimit = 2;
     // This attaches the camera to the canvas
     camera1.attachControl(canvas, true);
     var camera2 = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
@@ -40,17 +41,17 @@ const createScene = async () => {
     button1.fontSize = 50;
     button1.background = "green";
     button1.onPointerUpObservable.add(function () {
-       scene.activeCameras.push(camera1)
+       scene.activeCamera = camera1
     });
-    var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
-    button2.top = "150px";
+    var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Move");
+    button2.top = "320px";
     button2.width = 0.2;
     button2.height = 0.1;
     button2.color = "white";
     button2.fontSize = 30;
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
-        scene.activeCameras.push(camera2)
+        scene.activeCamera = camera2
     });
     advancedTexture.addControl(button1);
         advancedTexture.addControl(button2);
