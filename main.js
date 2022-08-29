@@ -31,31 +31,22 @@ const createScene = async () => {
     );
 
     // UniversalCamera
-    const camera1 = new BABYLON.FreeCamera(
-        "freeCamera",
-        new BABYLON.Vector3(0, 0, -10),
-        scene
-    );
-
-    // Arc Camera
-    // const alpha = Math.PI / 4;
-    // const beta = Math.PI / 3;
-    // const radius = 8;
-    // const target = BABYLON.Vector3(0, 1, 1);
-    // const camera = new BABYLON.ArcRotateCamera(
-    //     "Camera",
-    //     alpha,
-    //     beta,
-    //     radius,
-    //     target,
+    // const camera1 = new BABYLON.FreeCamera(
+    //     "freeCamera",
+    //     new BABYLON.Vector3(0, 0, -10),
     //     scene
     // );
+    var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, 0), scene);
 
-    // // Targets the camera to a particular position. In this case the scene origin
-    // camera.setTarget(BABYLON.Vector3.Zero());
-
-    camera1.attachControl(canvas, true);
-    // camera.attachControl(canvas, true);
+    // Targets the camera to a particular position
+    camera.setTarget(new BABYLON.Vector3(0, 0, -10));
+    
+    // Sets the sensitivity of the camera to movement and rotation
+    camera.angularSensibility = 10;
+    camera.moveSensibility = 10;
+    
+    // Attach the camera to the canvas
+    camera.attachControl(canvas, true);
 
     const light = new BABYLON.HemisphericLight(
         "light",
@@ -84,17 +75,17 @@ const createScene = async () => {
     // const xrCamera = new WebXRCamera("camera", scene, sessionManager);
 
     // Initialize XR experience with default experience helper.
-    const xrHelper = await scene.createDefaultXRExperienceAsync({
-        uiOptions: {
-            sessionMode: "immersive-ar",
-            referenceSpaceType: "local-floor"
-        },
-        optionalFeatures: true
-    });
-    if (!xrHelper.baseExperience) {
-        // XR support is unavailable.
-        console.log("WebXR support is unavailable");
-    } else {
+    // const xrHelper = await scene.createDefaultXRExperienceAsync({
+    //     uiOptions: {
+    //         sessionMode: "immersive-ar",
+    //         referenceSpaceType: "local-floor"
+    //     },
+    //     optionalFeatures: true
+    // });
+    // if (!xrHelper.baseExperience) {
+    //     // XR support is unavailable.
+    //     console.log("WebXR support is unavailable");
+    // } else {
         // XR support is available; proceed.
         // const supported = await WebXRSessionManager.IsSessionSupportedAsync('immersive-vr');
         // if (supported) {
@@ -104,7 +95,7 @@ const createScene = async () => {
         // }
 
         return scene;
-    }
+    // }
 };
 
 // const sceneToRender = createScene();
