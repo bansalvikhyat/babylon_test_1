@@ -26,7 +26,7 @@ const createScene = async () => {
         "fish.glb",
         scene,
         function (newMeshes) {
-            newMeshes[0].scaling = new BABYLON.Vector3(1, 1, 1);
+            newMeshes[0].scaling = new BABYLON.Vector3(3, 3, 3);
         }
     );
 
