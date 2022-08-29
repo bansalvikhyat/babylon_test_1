@@ -16,7 +16,8 @@ const createScene = async () => {
 
     // scene.clearColor = new BABYLON.Color3.Black();
 
-    const box = BABYLON.MeshBuilder.CreateBox("box", {});
+    // const box = BABYLON.MeshBuilder.CreateBox("box", {});
+    const box = BABYLON.MeshBuilder.CreateCylinder("cylinder", {height: 2, diameter: 1}, scene);
     box.position.x = 0;
     box.position.y = 0;
 
