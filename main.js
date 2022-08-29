@@ -18,7 +18,7 @@ const createScene = async () => {
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
-    button1.top = "320px";
+    button1.top = "250px";
     button1.width = 0.4;
     button1.height = 0.1;
     button1.color = "white";
@@ -34,11 +34,11 @@ const createScene = async () => {
         camera.attachControl(canvas, true);
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
-    button2.top = "380px";
-    button2.width = 0.4;
+    button2.top = "280px";
+    button2.width = 0.2;
     button2.height = 0.1;
     button2.color = "white";
-    button2.fontSize = 50;
+    button2.fontSize = 30;
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
       alert("two");
