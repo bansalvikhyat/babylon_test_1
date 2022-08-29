@@ -66,7 +66,7 @@ const createScene = async () => {
        scene.activeCamera = camera1
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
-    button2.top = "220px";
+    button2.top = "280px";
     button2.color = "white";
     button2.width = 0.2;
     button2.height = 0.1;
