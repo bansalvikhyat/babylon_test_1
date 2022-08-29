@@ -34,14 +34,21 @@ const createScene = async () => {
         camera.attachControl(canvas, true);
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
-    button2.top = "280px";
+    button2.top = "320px";
     button2.width = 0.2;
     button2.height = 0.1;
     button2.color = "white";
     button2.fontSize = 30;
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
-      alert("two");
+        var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
+
+        camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+        
+        camera.angularSensibility = 1;
+        camera.moveSensibility = 1;
+        
+        camera.attachControl(canvas, true);
     });
     advancedTexture.addControl(button1);
         advancedTexture.addControl(button2);
