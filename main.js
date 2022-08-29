@@ -16,27 +16,27 @@ const createScene = async () => {
         }
     );
    //camera-1
-   var camera = new BABYLON.DeviceOrientationCamera(
+   var camera1 = new BABYLON.DeviceOrientationCamera(
     "DevOr_camera",
     new BABYLON.Vector3(0, 0, -10),
     scene
   );
 
-  camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+  camera1.setTarget(new BABYLON.Vector3(0, 0, 0));
 
-  camera.angularSensibility = 1;
-  camera.moveSensibility = 1;
+  camera1.angularSensibility = 2.5;
+  camera1.moveSensibility = 2.5;
 
 
-  camera.attachControl(canvas, true);
-  camera.upperRadiusLimit = 9;
-  camera.lowerRadiusLimit = 4;
+  camera1.attachControl(canvas, true);
+  camera1.upperRadiusLimit = 10;
+  camera1.lowerRadiusLimit = 4;
   
 
   //camera-2
   const alpha = -Math.PI / 4;
   const beta = Math.PI / 3;
-  const radius = 6;
+  const radius = 8;
   const target = new BABYLON.Vector3(0, 0, 0);
 
   const camera2 = new BABYLON.ArcRotateCamera(
@@ -49,33 +49,33 @@ const createScene = async () => {
   );
 
   camera2.attachControl(canvas, true);
-  camera2.lowerRadiusLimit = 2;
-  camera2.upperRadiusLimit = 8;
+  camera2.lowerRadiusLimit = 4;
+  camera2.upperRadiusLimit = 10;
 
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Move");
-    button1.top = "250px";
+    button1.top = "230px";
+    button1.color = "white";
     button1.width = 0.2;
     button1.height = 0.1;
-    button1.color = "white";
-    button1.fontSize = 50;
+    button1.fontSize = 20;
     button1.background = "green";
     button1.onPointerUpObservable.add(function () {
-       scene.activeCamera = camera
+       scene.activeCamera = camera1
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
-    button2.top = "320px";
+    button2.top = "300px";
+    button2.color = "white";
     button2.width = 0.2;
     button2.height = 0.1;
-    button2.color = "white";
-    button2.fontSize = 30;
+    button2.fontSize = 20;
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
         scene.activeCamera = camera2
     });
     advancedTexture.addControl(button1);
-        advancedTexture.addControl(button2);
+    advancedTexture.addControl(button2);
     
 
     const light = new BABYLON.HemisphericLight(
@@ -96,8 +96,8 @@ const createScene = async () => {
         minHeight: 480,
         maxWidth: 1920,
         maxHeight: 1080,
+        facingMode: "environment",
         deviceId: "",
-        facingMode: "environment"
       },
     );
 
