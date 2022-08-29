@@ -17,7 +17,7 @@ const createScene = async () => {
     );
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-    var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
+    var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
     button1.top = "320px";
     button1.width = 0.4;
     button1.height = 0.1;
@@ -25,7 +25,13 @@ const createScene = async () => {
     button1.fontSize = 50;
     button1.background = "green";
     button1.onPointerUpObservable.add(function () {
-      alert("one");
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
+
+        // Positions the camera overwriting alpha, beta, radius
+        camera.setPosition(new BABYLON.Vector3(0, 0, 0));
+        
+        // This attaches the camera to the canvas
+        camera.attachControl(canvas, true);
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
     button2.top = "380px";
@@ -37,6 +43,8 @@ const createScene = async () => {
     button2.onPointerUpObservable.add(function () {
       alert("two");
     });
+    advancedTexture.addControl(button1);
+        advancedTexture.addControl(button2);
     var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
 
     camera.setTarget(new BABYLON.Vector3(0, 0, 0));
