@@ -17,9 +17,9 @@ const createScene = async () => {
     // scene.clearColor = new BABYLON.Color3.Black();
 
     // const box = BABYLON.MeshBuilder.CreateBox("box", {});
-    const box = BABYLON.MeshBuilder.CreateCylinder("cylinder", {height: 2, diameter: 1}, scene);
-    box.position.x = 0;
-    box.position.y = 0;
+    // const box = BABYLON.MeshBuilder.CreateCylinder("cylinder", {height: 2, diameter: 1}, scene);
+    // box.position.x = 0;
+    // box.position.y = 0;
 
     const fish = BABYLON.SceneLoader.ImportMesh(
         "",
@@ -27,7 +27,7 @@ const createScene = async () => {
         "fish.glb",
         scene,
         function (newMeshes) {
-            newMeshes[0].scaling = new BABYLON.Vector3(3, 3, 3);
+            newMeshes[0].scaling = new BABYLON.Vector3(5, 5, 5);
         }
     );
 
