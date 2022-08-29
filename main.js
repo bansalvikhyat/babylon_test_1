@@ -36,10 +36,10 @@ const createScene = async () => {
     //     new BABYLON.Vector3(0, 0, -10),
     //     scene
     // );
-    var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
 
     // Targets the camera to a particular position
-    camera.setTarget(new BABYLON.Vector3(0, 0, -10));
+    camera.setTarget(new BABYLON.Vector3(0, 0, 0));
     
     // Sets the sensitivity of the camera to movement and rotation
     camera.angularSensibility = 10;
