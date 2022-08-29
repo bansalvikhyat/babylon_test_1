@@ -17,8 +17,8 @@ const createScene = async () => {
     // scene.clearColor = new BABYLON.Color3.Black();
 
     const box = BABYLON.MeshBuilder.CreateBox("box", {});
-    box.position.x = 2;
-    box.position.y = 1;
+    box.position.x = 0;
+    box.position.y = 0;
 
     const fish = BABYLON.SceneLoader.ImportMesh(
         "",
@@ -42,8 +42,8 @@ const createScene = async () => {
     camera.setTarget(new BABYLON.Vector3(0, 0, 0));
     
     // Sets the sensitivity of the camera to movement and rotation
-    camera.angularSensibility = 10;
-    camera.moveSensibility = 10;
+    camera.angularSensibility = 1;
+    camera.moveSensibility = 1;
     
     // Attach the camera to the canvas
     camera.attachControl(canvas, true);
