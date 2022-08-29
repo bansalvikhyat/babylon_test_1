@@ -15,25 +15,46 @@ const createScene = async () => {
             newMeshes[0].scaling = new BABYLON.Vector3(5, 5, 5);
         }
     );
-    var camera1 = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
+   //camera-1
+   var camera = new BABYLON.DeviceOrientationCamera(
+    "DevOr_camera",
+    new BABYLON.Vector3(0, 0, -10),
+    scene
+  );
 
-    // Positions the camera overwriting alpha, beta, radius
-    camera1.setPosition(new BABYLON.Vector3(0, 0, 0));
-    camera1.upperRadiusLimit =  8;
-    camera1.lowerRadiusLimit = 2;
-    // This attaches the camera to the canvas
-    camera1.attachControl(canvas, true);
-    var camera2 = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
+  camera.setTarget(new BABYLON.Vector3(0, 0, 0));
 
-    camera2.setTarget(new BABYLON.Vector3(0, 0, 0));
-    
-    camera2.angularSensibility = 1;
-    camera2.moveSensibility = 1;
-    
-    camera2.attachControl(canvas, true);
+  camera.angularSensibility = 1;
+  camera.moveSensibility = 1;
+
+
+  camera.attachControl(canvas, true);
+  camera.upperRadiusLimit = 9;
+  camera.lowerRadiusLimit = 4;
+  
+
+  //camera-2
+  const alpha = -Math.PI / 4;
+  const beta = Math.PI / 3;
+  const radius = 6;
+  const target = new BABYLON.Vector3(0, 0, 0);
+
+  const camera2 = new BABYLON.ArcRotateCamera(
+    "Camera",
+    alpha,
+    beta,
+    radius,
+    target,
+    scene
+  );
+
+  camera2.attachControl(canvas, true);
+  camera2.lowerRadiusLimit = 2;
+  camera2.upperRadiusLimit = 8;
+
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-    var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
+    var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Move");
     button1.top = "250px";
     button1.width = 0.2;
     button1.height = 0.1;
@@ -41,9 +62,9 @@ const createScene = async () => {
     button1.fontSize = 50;
     button1.background = "green";
     button1.onPointerUpObservable.add(function () {
-       scene.activeCamera = camera1
+       scene.activeCamera = camera
     });
-    var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Move");
+    var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
     button2.top = "320px";
     button2.width = 0.2;
     button2.height = 0.1;
