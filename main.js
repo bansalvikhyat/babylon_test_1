@@ -55,21 +55,23 @@ const createScene = async () => {
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Move");
-    button1.top = "230px";
+    button1.top = "150px";
     button1.color = "white";
     button1.width = 0.2;
     button1.height = 0.1;
     button1.fontSize = 20;
     button1.background = "green";
+    button1.cornerRadius = 40
     button1.onPointerUpObservable.add(function () {
        scene.activeCamera = camera1
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
-    button2.top = "300px";
+    button2.top = "220px";
     button2.color = "white";
     button2.width = 0.2;
     button2.height = 0.1;
     button2.fontSize = 20;
+    button2.cornerRadius = 40
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
         scene.activeCamera = camera2
