@@ -15,51 +15,46 @@ const createScene = async () => {
             newMeshes[0].scaling = new BABYLON.Vector3(5, 5, 5);
         }
     );
+    var camera1 = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
+
+    // Positions the camera overwriting alpha, beta, radius
+    camera1.setPosition(new BABYLON.Vector3(0, 0, 0));
+    
+    // This attaches the camera to the canvas
+    camera1.attachControl(canvas, true);
+    var camera2 = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
+
+    camera2.setTarget(new BABYLON.Vector3(0, 0, 0));
+    
+    camera2.angularSensibility = 1;
+    camera2.moveSensibility = 1;
+    
+    camera2.attachControl(canvas, true);
     var advancedTexture =
           BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Fixed");
     button1.top = "250px";
-    button1.width = 0.4;
+    button1.width = 0.2;
     button1.height = 0.1;
     button1.color = "white";
     button1.fontSize = 50;
     button1.background = "green";
     button1.onPointerUpObservable.add(function () {
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, new BABYLON.Vector3(0, 0, 0), scene);
-
-        // Positions the camera overwriting alpha, beta, radius
-        camera.setPosition(new BABYLON.Vector3(0, 0, 0));
-        
-        // This attaches the camera to the canvas
-        camera.attachControl(canvas, true);
+       scene.activeCameras.push(camera1)
     });
     var button2 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
-    button2.top = "320px";
+    button2.top = "150px";
     button2.width = 0.2;
     button2.height = 0.1;
     button2.color = "white";
     button2.fontSize = 30;
     button2.background = "green";
     button2.onPointerUpObservable.add(function () {
-        var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
-
-        camera.setTarget(new BABYLON.Vector3(0, 0, 0));
-        
-        camera.angularSensibility = 1;
-        camera.moveSensibility = 1;
-        
-        camera.attachControl(canvas, true);
+        scene.activeCameras.push(camera2)
     });
     advancedTexture.addControl(button1);
         advancedTexture.addControl(button2);
-    var camera = new BABYLON.DeviceOrientationCamera("DevOr_camera", new BABYLON.Vector3(0, 0, -10), scene);
-
-    camera.setTarget(new BABYLON.Vector3(0, 0, 0));
     
-    camera.angularSensibility = 1;
-    camera.moveSensibility = 1;
-    
-    camera.attachControl(canvas, true);
 
     const light = new BABYLON.HemisphericLight(
         "light",
