@@ -15,6 +15,8 @@ const createScene = async () => {
             newMeshes[0].scaling = new BABYLON.Vector3(5, 5, 5);
         }
     );
+    var advancedTexture =
+          BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
     var button1 = BABYLON.GUI.Button.CreateSimpleButton("but1", "Click Me");
     button1.top = "320px";
     button1.width = 0.4;
