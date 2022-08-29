@@ -124,6 +124,6 @@ engine.runRenderLoop(function () {
 });
 
 // Handle browser resize.
-window.addEventListener("resize", function () {
-    engine.resize();
-});
+// window.addEventListener("resize", function () {
+//     engine.resize();
+// });
