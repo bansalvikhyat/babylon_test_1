@@ -62,6 +62,7 @@ const createScene = async () => {
     button1.fontSize = 20;
     button1.background = "green";
     button1.cornerRadius = 40
+    button1.bottom= "50px"
     button1.onPointerUpObservable.add(function () {
        scene.activeCamera = camera1
     });
